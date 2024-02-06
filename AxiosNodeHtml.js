@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 const base_url = "http://localhost:3000";
 
 // Set the template engine
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); //view file .ejs
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -46,7 +46,7 @@ app.post("/create", async(req,res) => {
     try{
         const data = { title: req.body.title, author: req.body.author};
         await axios.post(base_url + '/books',data);
-        res.redirect("/");
+        res.redirect("/"); //redirect to first page
     } catch (err) {
         console.error(err);
         res.status(500).send('Error');
@@ -56,18 +56,18 @@ app.post("/create", async(req,res) => {
 app.get("/update/:id", async (req, res) => {
     try {
         const response = await axios.get(
-            base_url + '/books/' + req.params.id);
-            res.render("update",{ book: response.data});
+        base_url + '/books/' + req.params.id);
+        res.render("update",{ book: response.data});
     } catch (err) {
             console.error(err);
-            res.status(500).send('Error');
+            res.status(500).send('Error Monk');
     }
 });
 
 app.post("/update/:id", async(req,res) => {
     try{
         const data = {title: req.body.title, author: req.body.author};
-        await axios.HttpStatusCode(base_url + '/books/' + req.params.id, data);
+        await axios.put(base_url + '/books/' + req.params.id, data);
         res.redirect("/");
     } catch(err){
         console.error(err);
