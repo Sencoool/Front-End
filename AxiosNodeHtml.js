@@ -24,7 +24,7 @@ app.get("/", async (req, res) => {
         res.render("books",{books: response.data});
     } catch(err){
         console.error(err);
-        res.status(500).send('Error');
+        res.status(500).send('Error slash');
     }
 });
 
@@ -34,7 +34,7 @@ app.get("/book/:id", async (req,res) => {
         res.render("book", { book: response.data});
     } catch (err){
         console.error(err);
-        res.status(500).send('Error');
+        res.status(500).send('Error id');
     }
 });
 
@@ -49,7 +49,7 @@ app.post("/create", async(req,res) => {
         res.redirect("/"); //redirect to first page
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error');
+        res.status(500).send('Error create');
     }
 });
 
@@ -60,7 +60,7 @@ app.get("/update/:id", async (req, res) => {
         res.render("update",{ book: response.data});
     } catch (err) {
             console.error(err);
-            res.status(500).send('Error Monk');
+            res.status(500).send('Error update get');
     }
 });
 
@@ -71,7 +71,7 @@ app.post("/update/:id", async(req,res) => {
         res.redirect("/");
     } catch(err){
         console.error(err);
-        res.status(500).send('Error');
+        res.status(500).send('Error update post');
     }
 });
 
@@ -81,7 +81,7 @@ app.get("/delete/:id", async (req,res) => {
         res.redirect("/");
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error')
+        res.status(500).send('Error delete')
     }
 });
 
