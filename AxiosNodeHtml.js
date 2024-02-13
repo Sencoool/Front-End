@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 const base_url = "http://node58299-jiramet-noderest.proen.app.ruk-com.cloud";
 
 // Set the template engine
+app.set('views',path.join(__dirname, "public/views"));
 app.set('view engine', 'ejs'); //view file .ejs
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
